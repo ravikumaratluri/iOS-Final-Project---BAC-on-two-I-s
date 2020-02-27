@@ -8,23 +8,38 @@
 
 import UIKit
 
-class ReationsLogViewController: UIViewController {
+class ReactionsLogViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.title = "Reactions Log"
+        
         // Do any additional setup after loading the view.
     }
+ 
+    override func numberOfSections(in tableView: UITableView) -> Int {
+            return 1
+        }
+        
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return Reactions.shared.numReactions()
+        }
+        
+        let timeLBLTag = 100
+        let dayLBLTag = 200
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let bac = tableView.dequeueReusableCell(withIdentifier: "bac", for: indexPath)
+            if let reaction = Reactions.shared[indexPath.row]{
+            
+                let timeLBL = bac.viewWithTag(timeLBLTag) as! UILabel
+                let dayLBL = bac.viewWithTag(dayLBLTag) as! UILabel
+                
+                timeLBL.text = reaction.time
+                dayLBL.text = reaction.day
+            }
+            return bac
+        }
 }
+
