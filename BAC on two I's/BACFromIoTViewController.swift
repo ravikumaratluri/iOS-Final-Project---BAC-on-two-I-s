@@ -9,6 +9,20 @@
 import UIKit
 
 class BACFromIoTViewController: UIViewController {
+    
+    @IBOutlet weak var rateLBL:UILabel!
+    @IBOutlet weak var stageLBL:UILabel!
+    @IBOutlet weak var recordedAtLBL:UILabel!
+    
+    @IBAction func getBAC(sender: Any){
+        let rate = 10.45
+        let stage = "sobriety"
+        let recordedAt = "Fri 10:16 PM"
+        rateLBL.text = String(rate)
+        stageLBL.text = stage
+        recordedAtLBL.text = recordedAt
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
