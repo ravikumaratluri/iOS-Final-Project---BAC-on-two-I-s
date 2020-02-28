@@ -10,6 +10,8 @@ import UIKit
 
 class ReactionViewController: UIViewController {
 
+    @IBOutlet weak var reactionAreaView: UIView!
+    
     @IBAction func startBtn(_ sender: Any) {
     }
     
@@ -18,9 +20,11 @@ class ReactionViewController: UIViewController {
     
     @IBAction func reactionBtn(_ sender: Any) {
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        
     }
 
 

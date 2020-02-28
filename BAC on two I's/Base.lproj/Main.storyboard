@@ -23,14 +23,21 @@
                                     <action selector="stopBtn:" destination="9pv-A4-QxB" eventType="touchUpInside" id="To1-xR-9Ag"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eF0-J4-KEf">
-                                <rect key="frame" x="155" y="385" width="104" height="96"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XVG-Ht-92S">
+                                <rect key="frame" x="20" y="120" width="374" height="522"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="reactionBtn " image="icons8-light-on-96"/>
-                                <connections>
-                                    <action selector="reactionBtn:" destination="9pv-A4-QxB" eventType="touchUpInside" id="yc6-Qa-aDK"/>
-                                </connections>
-                            </button>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oFc-xd-oLg">
+                                        <rect key="frame" x="150" y="129" width="75" height="72"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="reactionBtn" image="icons8-float-96"/>
+                                        <connections>
+                                            <action selector="reactionBtn:" destination="9pv-A4-QxB" eventType="touchUpInside" id="ccA-Ln-l37"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Uq-4r-ba0">
                                 <rect key="frame" x="62" y="669" width="102" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -46,6 +53,9 @@
                     <tabBarItem key="tabBarItem" title="reaction" image="rectangle.grid.1x2" catalog="system" id="acW-dT-cKf">
                         <color key="badgeColor" cocoaTouchSystemColor="darkTextColor"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="reactionAreaView" destination="XVG-Ht-92S" id="t7Z-mh-aIH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -372,7 +382,7 @@
         <image name="BAC2" width="600" height="493"/>
         <image name="arrow.branch" catalog="system" width="64" height="54"/>
         <image name="calendar.circle" catalog="system" width="64" height="60"/>
-        <image name="icons8-light-on-96" width="96" height="96"/>
+        <image name="icons8-float-96" width="96" height="96"/>
         <image name="icons8-next-96" width="96" height="96"/>
         <image name="icons8-stop-squared-96" width="96" height="96"/>
         <image name="pencil.and.ellipsis.rectangle" catalog="system" width="64" height="40"/>
