@@ -10,11 +10,20 @@ import UIKit
 
 class BACFromIoTViewController: UIViewController {
     
+    /// rateLBL for the rate of BAC
     @IBOutlet weak var rateLBL:UILabel!
+    
+    /// stageLBL for the drinking stage
     @IBOutlet weak var stageLBL:UILabel!
+    
+    /// recordedAtLBL for the date and time recorded
     @IBOutlet weak var recordedAtLBL:UILabel!
     
+    /// getBAC for the getting BAC value from some API
+    /// - Parameter sender: UIButton
     @IBAction func getBAC(sender: Any){
+        
+        //as of now displaying all static data
         let rate = 10.45
         let stage = "sobriety"
         let recordedAt = "Fri 10:16 PM"
@@ -23,23 +32,10 @@ class BACFromIoTViewController: UIViewController {
         recordedAtLBL.text = recordedAt
         
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         navigationItem.title = "BAC from IoT"
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
