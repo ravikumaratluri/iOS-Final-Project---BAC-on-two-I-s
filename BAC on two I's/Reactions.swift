@@ -26,8 +26,8 @@ class Reactions {
     
     private var reactions:[Reaction] = [
         Reaction(time:"Reaction Time",day:"Performed at"),
-        Reaction(time:"09:12",day:"Fri 4:05 AM"),
-        Reaction(time:"05:04",day:"Sat 2:20 PM"),
+        Reaction(time:"09:12",day:"12/02/2020 Fri 4:05 AM"),
+        Reaction(time:"05:04",day:"14/02/2020 Sat 2:20 PM"),
         Reaction(time:"12:01",day:"Mon 5:00 PM"),
         Reaction(time:"23:20",day:"Tue 12:43 AM"),
         Reaction(time:"02:02",day:"Wed 3:34 AM"),
