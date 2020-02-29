@@ -355,6 +355,18 @@
                                     <color key="titleColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="Beer.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Pdf-dO-0dg">
+                                <rect key="frame" x="20" y="337" width="85" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="Wine.png" translatesAutoresizingMaskIntoConstraints="NO" id="m8h-Ec-ghz">
+                                <rect key="frame" x="150" y="337" width="114" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="Liquor.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="xH4-Gk-aR1">
+                                <rect key="frame" x="306" y="337" width="76" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="gay-T0-Phi"/>
@@ -408,6 +420,9 @@
     </scenes>
     <resources>
         <image name="BAC2" width="600" height="493"/>
+        <image name="Beer.jpg" width="350" height="350"/>
+        <image name="Liquor.jpg" width="214" height="400"/>
+        <image name="Wine.png" width="248" height="203"/>
         <image name="chart.bar.fill" catalog="system" width="64" height="44"/>
         <image name="house" catalog="system" width="64" height="54"/>
         <image name="icons8-float-96" width="96" height="96"/>
