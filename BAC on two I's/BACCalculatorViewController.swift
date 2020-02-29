@@ -9,22 +9,38 @@
 import UIKit
 
 class BACCalculatorViewController: UIViewController {
-
+    
+    /// All text fields to collect data for BAC
+    @IBOutlet weak var weightTF: UITextField!
+    @IBOutlet weak var beerTF: UITextField!
+    @IBOutlet weak var wineTF: UITextField!
+    @IBOutlet weak var liquorTF: UITextField!
+    @IBOutlet weak var hoursTF: UITextField!
+    @IBOutlet weak var minutesTF: UITextField!
+    @IBOutlet weak var resultTF: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    /// calculate to calculate the BAC
+    /// - Parameter sender: UIButton
+    @IBAction func calculate(sender: Any){
+        resultTF.text = "10.4 ~ sobriety"
     }
-    */
-
+    
+    /// clear to reset all fields
+    /// - Parameter sender: UIButton
+    @IBAction func clear(sender: Any){
+        weightTF.text = ""
+        beerTF.text = ""
+        wineTF.text = ""
+        liquorTF.text = ""
+        hoursTF.text = ""
+        minutesTF.text = ""
+        resultTF.text = ""
+    }
+    
 }
