@@ -13,6 +13,7 @@ struct Reaction {
     var day:String
 }
 
+/// Model for reaction database table
 class Reactions {
     
     private static var _shared:Reactions!
@@ -37,6 +38,8 @@ class Reactions {
         
     }
     
+    /// getReaction to get the particular reaction
+    /// - Parameter index: index
     func getReaction(at index:Int)->Reaction? {
         if index >= 0 && index < reactions.count {
             return reactions[index]
@@ -45,6 +48,7 @@ class Reactions {
         }
     }
     
+    /// numReactions to show the count of reactions recorded
     func numReactions()->Int{
         return reactions.count
     }

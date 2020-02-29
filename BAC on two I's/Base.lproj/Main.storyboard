@@ -46,6 +46,13 @@
                                     <action selector="startBtn:" destination="9pv-A4-QxB" eventType="touchUpInside" id="Cgs-qg-GQ2"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vrm-Pr-F7g">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="How Fast You Reacts?" id="KlA-wL-1ga"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
@@ -54,6 +61,7 @@
                         <color key="badgeColor" cocoaTouchSystemColor="darkTextColor"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="blinkingButton" destination="oFc-xd-oLg" id="11t-CV-Oh3"/>
                         <outlet property="reactionAreaView" destination="XVG-Ht-92S" id="t7Z-mh-aIH"/>
                     </connections>
                 </viewController>
@@ -212,7 +220,7 @@
         <!--Calculator-->
         <scene sceneID="Qyj-UE-XgD">
             <objects>
-                <viewController id="qHL-GZ-lNF" sceneMemberID="viewController">
+                <viewController id="qHL-GZ-lNF" customClass="BACCalculatorViewController" customModule="BAC_on_two_I_s" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="khH-WK-CVb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -236,12 +244,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="clearWithSender:" destination="qHL-GZ-lNF" eventType="touchUpInside" id="Syj-Yb-w1Q"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmY-5o-zeV">
                                 <rect key="frame" x="74" y="590" width="102" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Calculate"/>
+                                <connections>
+                                    <action selector="calculateWithSender:" destination="qHL-GZ-lNF" eventType="touchUpInside" id="fAy-lg-UoQ"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Results:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKS-Cm-wPo">
                                 <rect key="frame" x="20" y="668" width="74" height="27"/>
@@ -317,7 +331,7 @@
                                 <rect key="frame" x="-7" y="44" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Calculator" id="vo4-eo-KMA"/>
+                                    <navigationItem title="Calculate BAC" id="vo4-eo-KMA"/>
                                 </items>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Female" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOt-1W-FhM">
@@ -365,6 +379,15 @@
                         <viewLayoutGuide key="safeArea" id="gay-T0-Phi"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Calculator" image="plus.slash.minus" catalog="system" id="c9f-4Z-wMA"/>
+                    <connections>
+                        <outlet property="beerTF" destination="8p9-GL-PA3" id="fBC-0h-Q4X"/>
+                        <outlet property="hoursTF" destination="0q7-tk-dhM" id="7N6-Ff-dhl"/>
+                        <outlet property="liquorTF" destination="eXY-lH-sYu" id="nnM-S7-zMg"/>
+                        <outlet property="minutesTF" destination="mmp-62-5MH" id="Vid-8d-rF3"/>
+                        <outlet property="resultTF" destination="m4L-8y-2Bh" id="41X-UG-qhy"/>
+                        <outlet property="weightTF" destination="YMC-cu-xr1" id="166-7F-oS7"/>
+                        <outlet property="wineTF" destination="JpG-0f-fHV" id="65f-En-nsy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aLV-1i-3BD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
