@@ -25,7 +25,7 @@ class BACFromIoTViewController: UIViewController {
         
         //as of now displaying all static data
         let rate = 10.45
-        let stage = "sobriety"
+        let stage = "Sobriety"
         let recordedAt = "Fri 10:16 PM"
         rateLBL.text = String(rate)
         stageLBL.text = stage

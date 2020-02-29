@@ -15,6 +15,7 @@ class ReactionsLogViewController: UITableViewController {
         navigationItem.title = "Reactions Log"
     }
     
+    // Returns the number of sections
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
