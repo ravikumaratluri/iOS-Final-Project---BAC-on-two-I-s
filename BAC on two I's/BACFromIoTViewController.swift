@@ -27,6 +27,7 @@ class BACFromIoTViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.title = "BAC from IoT"
         // Do any additional setup after loading the view.
     }
     

@@ -77,7 +77,7 @@
             </objects>
             <point key="canvasLocation" x="1727.536231884058" y="-341.51785714285711"/>
         </scene>
-        <!--BAC-->
+        <!--From IoT View Controller-->
         <scene sceneID="lSS-Oh-W2o">
             <objects>
                 <viewController id="jdP-2C-APD" customClass="BACFromIoTViewController" customModule="BAC_on_two_I_s" customModuleProvider="target" sceneMemberID="viewController">
@@ -131,13 +131,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BAC from IoT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gy9-ai-b04">
-                                <rect key="frame" x="112" y="66" width="190" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RNf-NU-o6B">
                                 <rect key="frame" x="168.90308607579755" y="635" width="76" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -160,7 +153,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="tOe-Oc-vq0"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="BAC" image="waveform.path.ecg" catalog="system" id="j6s-WJ-5mC"/>
+                    <navigationItem key="navigationItem" id="dq3-1w-ufJ"/>
                     <connections>
                         <outlet property="rateLBL" destination="mFk-og-4hR" id="839-RH-xnW"/>
                         <outlet property="recordedAtLBL" destination="iAn-c9-os4" id="wiu-aK-FrZ"/>
@@ -169,7 +162,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UWx-Gd-RNZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2621.739130434783" y="-352.23214285714283"/>
+            <point key="canvasLocation" x="3531.884057971015" y="-352.23214285714283"/>
         </scene>
         <!--Reactions Log View Controller-->
         <scene sceneID="QOF-QJ-WV6">
@@ -391,7 +384,7 @@
                         <segue destination="TYT-2h-JkP" kind="relationship" relationship="viewControllers" id="g1e-6B-50M"/>
                         <segue destination="qHL-GZ-lNF" kind="relationship" relationship="viewControllers" id="cBX-0d-RhD"/>
                         <segue destination="F3W-eG-Axm" kind="relationship" relationship="viewControllers" id="HlF-6z-JWf"/>
-                        <segue destination="jdP-2C-APD" kind="relationship" relationship="viewControllers" id="oYO-Qg-OwG"/>
+                        <segue destination="9dj-vq-QoU" kind="relationship" relationship="viewControllers" id="oYO-Qg-OwG"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -416,6 +409,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RLD-pn-9X3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="747.82608695652175" y="363.61607142857139"/>
+        </scene>
+        <!--BAC-->
+        <scene sceneID="e8I-aX-wLf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9dj-vq-QoU" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="BAC" image="waveform.path.ecg" catalog="system" id="j6s-WJ-5mC"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GwH-EN-qFq">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jdP-2C-APD" kind="relationship" relationship="rootViewController" id="0CO-CE-eob"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RQ6-nd-c5q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2621.739130434783" y="-352.23214285714283"/>
         </scene>
     </scenes>
     <resources>
