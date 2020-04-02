@@ -9,4 +9,6 @@ target 'BAC on two I\'s' do
 
   # Pods for BAC on two I's
        pod 'Parse'
+       pod 'Charts'
+       pod 'TinyConstraints'
 end

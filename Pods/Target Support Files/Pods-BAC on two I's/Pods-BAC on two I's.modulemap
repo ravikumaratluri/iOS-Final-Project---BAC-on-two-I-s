@@ -1,0 +1,6 @@
+module Pods_BAC_on_two_I_s {
+  umbrella header "Pods-BAC on two I's-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -33,7 +33,8 @@ class ReactionViewController: UIViewController {
         
         let dateTime = Date()
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM/dd/yyyy EEEE HH:mm:ss.SSSS"
+        formatter.timeZone = .current
+        formatter.dateFormat = "MM/dd/yyyy HH:mm:ss +SSSS"
         startTime = formatter.string(from: dateTime as Date)
     }
     
@@ -49,15 +50,17 @@ class ReactionViewController: UIViewController {
         
         let dateTime = Date()
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM/dd/yyyy EEEE HH:mm:ss.SSSS"
+        formatter.timeZone = .current
+        formatter.dateFormat = "MM/dd/yyyy HH:mm:ss +SSSS"
         endTime = formatter.string(from: dateTime as Date)
         print("Started at \(startTime)") // send to database
         print("Ended at \(endTime)")
-        startTime = endTime
         
-        let reaction = PFObject(className : "ReactionLog")
-        reaction["startTime"] = formatter.date(from: startTime)
-        reaction["endTime"] = formatter.date(from: endTime)
+        
+        let reaction = PFObject(className : "newTesting")
+        reaction["startTime"] = startTime
+        reaction["endTime"] = endTime
+        reaction["user"] = "new"
         reaction.saveInBackground {
         (success: Bool, error: Error?) -> Void in
         
@@ -68,7 +71,7 @@ class ReactionViewController: UIViewController {
                 print("error")
                }
         }
-
+        startTime = endTime
         
         // Find the blinkingButton's width and height
         let blinkingButtonWidth = blinkingButton.frame.width
