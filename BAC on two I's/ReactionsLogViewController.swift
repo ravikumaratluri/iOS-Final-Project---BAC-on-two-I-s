@@ -34,17 +34,13 @@ class ReactionsLogViewController: UITableViewController {
                     let formatter = DateFormatter()
                     formatter.dateFormat = "MM/dd/yyyy HH:mm:ss +SSSS"
                     formatter.timeZone = .autoupdatingCurrent
-                    
-                    
-                    
+  
                     let startTimeRaw = String(describing: object.object(forKey: "startTime")!)
                     let endTimeRaw = String(describing: object.object(forKey: "endTime")!)
-                    
                     
                     let startTime = formatter.date(from: startTimeRaw)
                     let endTime = formatter.date(from: endTimeRaw)
                     
-        
                     let seconds = Double(Calendar.current.dateComponents([.second], from: startTime!, to: endTime!).second!)
                     
                     let dayNumber = Calendar.current.component(.weekday, from: startTime!)
@@ -64,73 +60,36 @@ class ReactionsLogViewController: UITableViewController {
                     }else if dayNumber == 7 {
                         day = "Saturday"
                     }
-                
-                self.reactionTimes.append(seconds)
-                self.reactionDays.append(day)
+                    
+                    self.reactionTimes.append(seconds)
+                    self.reactionDays.append(day)
+                }
             }
-        }
             //print(self.reactionDays.count)
-        
+        }
     }
-}
-
-// Returns the number of sections
-override func numberOfSections(in tableView: UITableView) -> Int {
-    return 1
-}
-
-override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    print(self.reactionTimes.count)
-    return self.reactionTimes.count
-}
-
-// static values for the identifying the labels in table view
-let timeLBLTag = 100
-let dayLBLTag = 200
-
-override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let bac = tableView.dequeueReusableCell(withIdentifier: "bac", for: indexPath)
+    
+    // Returns the number of sections
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(self.reactionTimes.count)
+        return self.reactionTimes.count
+    }
+    
+    // static values for the identifying the labels in table view
+    let timeLBLTag = 100
+    let dayLBLTag = 200
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let bac = tableView.dequeueReusableCell(withIdentifier: "bac", for: indexPath)
         let timeLBL = bac.viewWithTag(timeLBLTag) as! UILabel
         let dayLBL = bac.viewWithTag(dayLBLTag) as! UILabel
         timeLBL.text = String(reactionTimes[indexPath.row])
         dayLBL.text = String(reactionDays[indexPath.row])
-    print(timeLBL.text,dayLBL.text)
-    return bac
+        print(timeLBL.text,dayLBL.text)
+        return bac
+    }
 }
-}
-//import UIKit
-//
-//class ReactionsLogViewController: UITableViewController {
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        navigationItem.title = "Reactions Log"
-//    }
-//
-//    // Returns the number of sections
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return Reactions.shared.numReactions()
-//    }
-//
-//    // static values for the identifying the labels in table view
-//    let timeLBLTag = 100
-//    let dayLBLTag = 200
-//
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let bac = tableView.dequeueReusableCell(withIdentifier: "bac", for: indexPath)
-//        if let reaction = Reactions.shared[indexPath.row]{
-//
-//            let timeLBL = bac.viewWithTag(timeLBLTag) as! UILabel
-//            let dayLBL = bac.viewWithTag(dayLBLTag) as! UILabel
-//
-//            timeLBL.text = reaction.time
-//            dayLBL.text = reaction.day
-//        }
-//        return bac
-//    }
-//}
-//
