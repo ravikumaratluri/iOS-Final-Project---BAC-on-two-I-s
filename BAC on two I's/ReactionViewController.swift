@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Parse
 
 class ReactionViewController: UIViewController {
+   // let reactionTime = PFObject(className:"ReactionTime")
      var startTime = "startTime"
      var endTime = "endTime"
     /// blinking button to display at random positions
@@ -28,6 +30,7 @@ class ReactionViewController: UIViewController {
     /// - Parameter sender: UIButton
     @IBAction func startBtn(_ sender: Any) {
         blinkingButton.isHidden = false
+        
         let dateTime = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yyyy EEEE HH:mm:ss.SSSS"
@@ -43,6 +46,30 @@ class ReactionViewController: UIViewController {
     /// reactionBtn to relocate the blinking button when clicked
     /// - Parameter sender: UIButton
     @IBAction func reactionBtn(_ sender: Any) {
+        
+        let dateTime = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yyyy EEEE HH:mm:ss.SSSS"
+        endTime = formatter.string(from: dateTime as Date)
+        print("Started at \(startTime)") // send to database
+        print("Ended at \(endTime)")
+        startTime = endTime
+        
+        let reaction = PFObject(className : "ReactionLog")
+        reaction["startTime"] = formatter.date(from: startTime)
+        reaction["endTime"] = formatter.date(from: endTime)
+        reaction.saveInBackground {
+        (success: Bool, error: Error?) -> Void in
+        
+            if (success) {
+                  print("success")
+                }
+            else{
+                print("error")
+               }
+        }
+
+        
         // Find the blinkingButton's width and height
         let blinkingButtonWidth = blinkingButton.frame.width
         let blinkingButtonHeight = blinkingButton.frame.height
@@ -63,14 +90,10 @@ class ReactionViewController: UIViewController {
         blinkingButton.center.x = xoffset + blinkingButtonWidth / 2
         blinkingButton.center.y = yoffset + blinkingButtonHeight / 2
         
-        let dateTime = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM/dd/yyyy EEEE HH:mm:ss.SSSS"
-        endTime = formatter.string(from: dateTime as Date)
-        print("Started at \(startTime)") // send to database
-        print("Ended at \(endTime)")
-        startTime = endTime
+        
+        
     }
     
+      
 }
 
