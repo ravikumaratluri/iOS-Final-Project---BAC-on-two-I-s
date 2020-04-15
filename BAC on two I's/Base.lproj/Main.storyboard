@@ -346,6 +346,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="54"/>
                                 <state key="normal" title="♂"/>
+                                <connections>
+                                    <action selector="maleButtonWithSender:" destination="qHL-GZ-lNF" eventType="touchUpInside" id="1To-E1-mBe"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Male" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uul-WJ-OfD">
                                 <rect key="frame" x="107" y="190" width="37" height="21"/>
@@ -361,6 +364,9 @@
                                 <state key="normal" title="♀">
                                     <color key="titleColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="femaleButtonWithSender:" destination="qHL-GZ-lNF" eventType="touchUpInside" id="IaI-Hj-fzO"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="Beer.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Pdf-dO-0dg">
                                 <rect key="frame" x="20" y="337" width="85" height="61"/>
