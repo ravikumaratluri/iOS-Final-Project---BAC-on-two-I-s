@@ -25,7 +25,13 @@ class Reactions {
         return _shared
     }
     
-    private var reactions:[Reaction] = [
+    private var startTime:Date
+    private var tappedTime:Date
+    var reactionTime:TimeInterval
+    
+    private var reactions:[Reaction]
+        /*
+    = [
         Reaction(time:"Reaction Time",day:"Performed at"),
         Reaction(time:"09:12",day:"12/02/2020 Fri 4:05 AM"),
         Reaction(time:"05:04",day:"14/02/2020 Sat 2:20 PM"),
@@ -33,10 +39,15 @@ class Reactions {
         Reaction(time:"23:20",day:"Tue 12:43 AM"),
         Reaction(time:"02:02",day:"Wed 3:34 AM"),
     ]
-    
+    */
     private init(){
-        
+        self.startTime = Date()
+        self.tappedTime = Date()
+        reactionTime = 0.0
+        reactions = []
     }
+    
+    
     
     /// getReaction to get the particular reaction
     /// - Parameter index: index
@@ -56,5 +67,39 @@ class Reactions {
     subscript(index:Int) -> Reaction? {
         return index >= 0 && index < reactions.count ? reactions[index] : nil
     }
-}
+    /*
+    func calculateStartTime() -> String {
+        
+                    startTime = Date()
+         
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "MM/dd/yyyy EEEE HH:mm:ss.SSS a"
+    
+                    let startTimeAndDate = formatter.string(from: startTime as Date)
+                   
+                 print("start: \(startTimeAndDate)")
+                    return startTimeAndDate
+        }
+    
+    func calculateTappedTime()  -> String {
+        
+               tappedTime = Date()
+            let formatter = DateFormatter()
+                formatter.dateFormat = "MM/dd/yyyy EEEE HH:mm:ss.SSS a"
+        
+                let tappedTimeAndDate = formatter.string(from: tappedTime as Date)
+                     print("tap: \(tappedTimeAndDate)")
+            return tappedTimeAndDate
+                
+        }
+    
+    func calculateReactionTime() -> String {
+        
+        let reactionTime = String(format:"%.6f",tappedTime.timeIntervalSince(startTime as Date))
+        startTime = tappedTime
 
+         print("reaction: \(reactionTime)")
+        return reactionTime
+    }
+   */
+}

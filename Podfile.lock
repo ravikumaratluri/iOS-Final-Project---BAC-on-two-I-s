@@ -1,0 +1,32 @@
+PODS:
+  - Bolts/Tasks (1.9.0)
+  - Charts (3.4.0):
+    - Charts/Core (= 3.4.0)
+  - Charts/Core (3.4.0)
+  - Parse (1.17.3):
+    - Parse/Core (= 1.17.3)
+  - Parse/Core (1.17.3):
+    - Bolts/Tasks (~> 1.9)
+  - TinyConstraints (4.0.1)
+
+DEPENDENCIES:
+  - Charts
+  - Parse
+  - TinyConstraints
+
+SPEC REPOS:
+  trunk:
+    - Bolts
+    - Charts
+    - Parse
+    - TinyConstraints
+
+SPEC CHECKSUMS:
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
+  Parse: c1ad2a04d2cab2b54b6fb7da05f741abf2cf57d1
+  TinyConstraints: 8dd91295e56797648c7bc335dd20e1d91ec4c192
+
+PODFILE CHECKSUM: 008ce898fc2d222fcee5167bc005fcaff3aa81ff
+
+COCOAPODS: 1.9.1
