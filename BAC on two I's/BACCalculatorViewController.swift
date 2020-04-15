@@ -10,16 +10,18 @@ import UIKit
 
 class BACCalculatorViewController: UIViewController {
     
+    //Variables to change the Text Fields to Doubles 
     private var weight:Double = 0.0
     private var beer:Double = 0.0
-    private var wine:Double
-    private var liquor:Double
-    private var hours:Double
-    private var minutes:Double
-    private var numResult:String
+    private var wine:Double = 0.0
+    private var liquor:Double = 0.0
+    private var hours:Double = 0.0
+    private var minutes:Double = 0.0
+    private var numResult:String = ""
     
+    //Variables for calculations
     private var eliminationRate = 0.00017
-    private var timeConsuming:Double
+    private var timeConsuming:Double = 0.0
     private var gender:Double = 0.0
     private var bac:Double = 0.0
     
@@ -32,13 +34,15 @@ class BACCalculatorViewController: UIViewController {
     @IBOutlet weak var minutesTF: UITextField!
     @IBOutlet weak var resultTF: UITextField!
     
-    
+   //Button for Male Icon
     @IBAction func maleButton(sender: UIButton){
         gender = 3.75
     }
+    //Button for Female Icon
     @IBAction func femaleButton(sender: UIButton){
         gender = 4.7
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,28 +50,20 @@ class BACCalculatorViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-//    init(){
-//        weight = Double(weightTF.text)
-//        beer = Double(beerTF.text)
-//        wine = Double(wineTF.text)
-//        liquor = Double(liquorTF.text)
-//        hours = Double(hoursTF.text)
-//        minutes = Double(minutesTF.text)
-//    }
-    
+
     /// calculate to calculate the BAC
     /// - Parameter sender: UIButton
     @IBAction func calculate(sender: Any){
-//        if let text = self.resultTF.text{
-//            var numResult = Double(text)
+
         
+        //Calculates BAC for Male Gender.
         if gender == 4.7{
             
                 bac = ((beer + wine + liquor) * gender * eliminationRate * timeConsuming)/weight
             numResult = String(bac)
             resultTF.text = numResult
         }
-            
+        //Calculates BAC for Female Gender
         else if gender == 3.75{
             
                  bac = ((beer + wine + liquor) * gender * eliminationRate * timeConsuming)/weight
