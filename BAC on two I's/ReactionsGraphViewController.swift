@@ -15,11 +15,15 @@ import Parse
 /// View Controller class for graph
 class ReactionsGraphViewController: UIViewController {
     
+    var reactions = Reactions.shared
+    
+    @IBOutlet weak var reactionSlider:UISlider!
+    @IBOutlet weak var reactionCountLBL:UILabel!
     
     
-    @IBAction func saveData(sender:Any){
-        
-        
+    @IBAction func doSomething(sender: UISlider){
+        print(sender.value)
+        setData(sender: sender)
     }
     
     
@@ -57,50 +61,23 @@ class ReactionsGraphViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        navigationItem.title = "Reaction Graph"
         view.addSubview(lineChartView)
         lineChartView.centerInSuperview()
         lineChartView.width(to: view)
         lineChartView.heightToWidth(of: view)
-        setData()
+        setData(sender: reactionSlider)
     }
     
     /// setData funcion to set data on graph
-    func setData(){
-        
-        let query = PFQuery(className:"newTesting")
-        query.whereKey("user", equalTo:"new")
-        query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
-            if let error = error {
-                // Log details of the failure
-                print(error.localizedDescription)
-            } else if let objects = objects {
-                // The find succeeded.
-                print("Successfully retrieved \(objects.count) scores.")
-                // Do something with the found objects
-                
-                var count:Double = 0
-                for object in objects {
-                    print()
-                    let formatter = DateFormatter()
-                    formatter.dateFormat = "MM/dd/yyyy HH:mm:ss +SSSS"
-                    formatter.timeZone = .autoupdatingCurrent
-                    
-                    
-                    
-                    let startTimeRaw = String(describing: object.object(forKey: "startTime")!)
-                    let endTimeRaw = String(describing: object.object(forKey: "endTime")!)
-                    
-                    
-                    let startTime = formatter.date(from: startTimeRaw)
-                    let endTime = formatter.date(from: endTimeRaw)
-                    
-                    print(startTimeRaw)
-                    print(startTime!)
-                    print(endTimeRaw)
-                    print(endTime!)
-                    let ySeconds = Double(Calendar.current.dateComponents([.second], from: startTime!, to: endTime!).second!)
-                    self.graphValues.append(ChartDataEntry(x: count, y: ySeconds))
-                    count = count + 1
+    func setData(sender:UISlider){
+        let percentageValue  = Int(floor(sender.value * Float(reactions.numReactions())))
+        self.graphValues = []
+        reactionCountLBL.text = "First \(percentageValue) Values"
+            for index in 0..<percentageValue{
+                if self.reactions.getReaction(at: index) != nil {
+                    let ySeconds = reactions.getReactionTime(indes: index)
+                    self.graphValues.append(ChartDataEntry(x: Double(index), y: ySeconds))
                 }
             }
             
@@ -109,9 +86,6 @@ class ReactionsGraphViewController: UIViewController {
             let data = LineChartData(dataSet: dataSet)
             self.lineChartView.data = data
         }
-        
-    }
-    
     
 }
 

@@ -60,7 +60,7 @@
             </objects>
             <point key="canvasLocation" x="1659.4202898550725" y="-320.08928571428572"/>
         </scene>
-        <!--Reaction Graph-->
+        <!--Reactions Graph View Controller-->
         <scene sceneID="gCf-uG-ed5">
             <objects>
                 <viewController id="F3W-eG-Axm" customClass="ReactionsGraphViewController" customModule="BAC_on_two_I_s" customModuleProvider="target" sceneMemberID="viewController">
@@ -68,10 +68,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reaction Times Graph" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ikG-Pz-72G">
-                                <rect key="frame" x="20" y="59" width="374" height="45"/>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="HTZ-Fy-k6y">
+                                <rect key="frame" x="18" y="184" width="378" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <connections>
+                                    <action selector="doSomethingWithSender:" destination="F3W-eG-Axm" eventType="valueChanged" id="KZU-bM-oTT"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPK-Uj-efS">
+                                <rect key="frame" x="20" y="128" width="374" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -79,11 +86,15 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="TKK-og-ERx"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Reaction Graph" image="chart.bar.fill" catalog="system" id="tHF-Il-AYi"/>
+                    <navigationItem key="navigationItem" id="pS3-E9-b1Y"/>
+                    <connections>
+                        <outlet property="reactionCountLBL" destination="hPK-Uj-efS" id="akS-AT-LGr"/>
+                        <outlet property="reactionSlider" destination="HTZ-Fy-k6y" id="Lky-EF-kcS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z6P-CT-DMC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2637.68115942029" y="-341.51785714285711"/>
+            <point key="canvasLocation" x="3547.826086956522" y="-341.51785714285711"/>
         </scene>
         <!--From IoT View Controller-->
         <scene sceneID="lSS-Oh-W2o">
@@ -170,7 +181,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UWx-Gd-RNZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4442.0289855072469" y="-352.23214285714283"/>
+            <point key="canvasLocation" x="5352.1739130434789" y="-352.23214285714283"/>
         </scene>
         <!--Reactions Log View Controller-->
         <scene sceneID="QOF-QJ-WV6">
@@ -412,7 +423,7 @@
                         <segue destination="MRa-8k-N4c" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="TYT-2h-JkP" kind="relationship" relationship="viewControllers" id="g1e-6B-50M"/>
                         <segue destination="qHL-GZ-lNF" kind="relationship" relationship="viewControllers" id="cBX-0d-RhD"/>
-                        <segue destination="F3W-eG-Axm" kind="relationship" relationship="viewControllers" id="HlF-6z-JWf"/>
+                        <segue destination="gkj-PU-ZCO" kind="relationship" relationship="viewControllers" id="HlF-6z-JWf"/>
                         <segue destination="9dj-vq-QoU" kind="relationship" relationship="viewControllers" id="oYO-Qg-OwG"/>
                     </connections>
                 </tabBarController>
@@ -456,7 +467,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RQ6-nd-c5q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3531.884057971015" y="-352.23214285714283"/>
+            <point key="canvasLocation" x="4442.0289855072469" y="-352.23214285714283"/>
         </scene>
         <!--Home-->
         <scene sceneID="Luu-yg-6rg">
@@ -478,6 +489,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xvH-M7-Ayq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="749.27536231884062" y="-320.08928571428572"/>
+        </scene>
+        <!--Reaction Graph-->
+        <scene sceneID="N7p-MB-C3d">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gkj-PU-ZCO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Reaction Graph" image="chart.bar.fill" catalog="system" id="tHF-Il-AYi"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="01R-b7-swl">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="F3W-eG-Axm" kind="relationship" relationship="rootViewController" id="mMb-1G-g7r"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l4J-HJ-Cka" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2637.68115942029" y="-341.51785714285711"/>
         </scene>
     </scenes>
     <resources>
