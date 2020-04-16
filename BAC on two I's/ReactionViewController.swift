@@ -13,6 +13,7 @@ class ReactionViewController: UIViewController {
    // let reactionTime = PFObject(className:"ReactionTime")
      var startTime = "startTime"
      var endTime = "endTime"
+    var reactions = Reactions.shared
     /// blinking button to display at random positions
     @IBOutlet weak var blinkingButton:UIButton!
     
@@ -56,21 +57,8 @@ class ReactionViewController: UIViewController {
         print("Started at \(startTime)") // send to database
         print("Ended at \(endTime)")
         
+        reactions.addReaction(startTime: startTime, endTime: endTime)
         
-        let reaction = PFObject(className : "newTesting")
-        reaction["startTime"] = startTime
-        reaction["endTime"] = endTime
-        reaction["user"] = "new"
-        reaction.saveInBackground {
-        (success: Bool, error: Error?) -> Void in
-        
-            if (success) {
-                  print("success")
-                }
-            else{
-                print("error")
-               }
-        }
         startTime = endTime
         
         // Find the blinkingButton's width and height
@@ -99,4 +87,5 @@ class ReactionViewController: UIViewController {
     
       
 }
+
 
