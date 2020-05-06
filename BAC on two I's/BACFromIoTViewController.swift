@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// BACFromIoTViewController class for IoT values tab
 class BACFromIoTViewController: UIViewController {
     
     /// rateLBL for the rate of BAC
@@ -30,7 +31,6 @@ class BACFromIoTViewController: UIViewController {
         rateLBL.text = String(rate)
         stageLBL.text = stage
         recordedAtLBL.text = recordedAt
-        
     }
     
     override func viewDidLoad() {

@@ -9,6 +9,7 @@
 import Foundation
 import Parse
 
+// Reaction struct
 struct Reaction {
     var startTime:String
     var endTime:String
@@ -17,7 +18,6 @@ struct Reaction {
 
 /// Model for reaction database table
 class Reactions {
-    
     private static var _shared:Reactions!
     
     static var shared:Reactions {
@@ -27,36 +27,34 @@ class Reactions {
         return _shared
     }
     
-    /// <#Description#>
     private var reactions:[Reaction] = []
-    
     private var days = ["Sundnay", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-
+    
     private init(){
-                let query = PFQuery(className:"ReactionsData")
-                query.whereKey("user", equalTo:"new")
-                query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
-                    if let error = error {
-                        // Log details of the failure
-                        print(error.localizedDescription)
-                    } else if let objects = objects {
-                        // The find succeeded.
-                        print("Successfully retrieved \(objects.count) scores.")
-                        // Do something with the found objects
-                        for object in objects {
-                            let formatter = DateFormatter()
-                            formatter.dateFormat = "MM/dd/yyyy HH:mm:ss +SSSS"
-                            formatter.timeZone = .autoupdatingCurrent
-                            let startTimeRaw = String(describing: object.object(forKey: "startTime")!)
-                            let endTimeRaw = String(describing: object.object(forKey: "endTime")!)
-                            let user = "new"
-                            let reaction = Reaction(startTime: startTimeRaw, endTime: endTimeRaw, user: user)
-                            self.reactions.append(reaction)
-                        }
-                    }
+        let query = PFQuery(className:"ReactionsData")
+        query.whereKey("user", equalTo:"new")
+        query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+            if let error = error {
+                // Log details of the failure
+                print(error.localizedDescription)
+            } else if let objects = objects {
+                // The find succeeded.
+                print("Successfully retrieved \(objects.count) scores.")
+                // Do something with the found objects
+                for object in objects {
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "MM/dd/yyyy HH:mm:ss +SSSS"
+                    formatter.timeZone = .autoupdatingCurrent
+                    let startTimeRaw = String(describing: object.object(forKey: "startTime")!)
+                    let endTimeRaw = String(describing: object.object(forKey: "endTime")!)
+                    let user = "new"
+                    let reaction = Reaction(startTime: startTimeRaw, endTime: endTimeRaw, user: user)
+                    self.reactions.append(reaction)
                 }
+            }
+        }
     }
-                
+    
     
     
     
@@ -80,10 +78,10 @@ class Reactions {
     }
     
     func clearReaction(){
-       let reactionQuery =  PFQuery(className: "ReactionsData")
+        let reactionQuery =  PFQuery(className: "ReactionsData")
         reactionQuery.whereKey("user", equalTo:"new")
         reactionQuery.findObjectsInBackground {
-        (objects: [PFObject]?, error: Error?)-> Void in
+            (objects: [PFObject]?, error: Error?)-> Void in
             if let error = error {
                 // Log details of the failure
                 print(error.localizedDescription)
@@ -105,14 +103,14 @@ class Reactions {
         reaction["endTime"] = endTime
         reaction["user"] = "new"
         reaction.saveInBackground {
-        (success: Bool, error: Error?) -> Void in
-        
+            (success: Bool, error: Error?) -> Void in
+            
             if (success) {
-                  print("success")
-                }
+                print("success")
+            }
             else{
                 print("error")
-               }
+            }
         }
         self.reactions.append(Reaction(startTime: startTime, endTime: endTime, user: "new"))
     }
@@ -124,7 +122,6 @@ class Reactions {
         let reaction  = reactions[indes]
         let startTime = formatter.date(from: reaction.startTime)
         let endTime = formatter.date(from: reaction.endTime)
-        
         
         var startIndex = reaction.startTime.index(reaction.startTime.startIndex, offsetBy: 21)
         var endIndex = reaction.startTime.index(reaction.startTime.endIndex, offsetBy: -1)
@@ -139,7 +136,6 @@ class Reactions {
         var differenceInMilliseconds = endMilliseconds - startMilliseconds
         differenceInMilliseconds = differenceInMilliseconds < 0 ? (1000+differenceInMilliseconds) : differenceInMilliseconds
         
-        
         let seconds = Double(Calendar.current.dateComponents([.second], from: startTime!, to: endTime!).second!)
         
         let totalMilliSeconds = (seconds * 1000) + differenceInMilliseconds
@@ -147,7 +143,6 @@ class Reactions {
     }
     
     func getDay(index:Int) -> String {
-        
         let formatter = DateFormatter()
         let todayDateTime = Date()
         formatter.dateFormat = "MM/dd/yyyy HH:mm:ss +SSSS"
