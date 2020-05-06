@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// BACCalculatorViewController class for the calculator view
 class BACCalculatorViewController: UIViewController {
     
     //Variables to change the Text Fields to Doubles 
@@ -40,16 +41,15 @@ class BACCalculatorViewController: UIViewController {
     @IBOutlet weak var maleBTN:UIButton!
     @IBOutlet weak var femaleBTN:UIButton!
     
-   //Button for Male Icon
+    //Button for Male Icon
     @IBAction func maleButton(sender: UIButton){
         maleLBL?.backgroundColor = UIColor.lightGray
         maleBTN.backgroundColor = UIColor.lightGray
         femaleLBL?.backgroundColor = UIColor.white
         femaleBTN.backgroundColor = UIColor.white
         gender = 0.73
-        
-        
     }
+    
     //Button for Female Icon
     @IBAction func femaleButton(sender: UIButton){
         maleLBL?.backgroundColor = UIColor.white
@@ -59,22 +59,17 @@ class BACCalculatorViewController: UIViewController {
         gender = 0.66
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         maleLBL?.backgroundColor = UIColor.white
         maleBTN.backgroundColor = UIColor.white
         femaleLBL?.backgroundColor = UIColor.white
         femaleBTN.backgroundColor = UIColor.white
-        
-        // Do any additional setup after loading the view.
     }
     
-
     /// calculate to calculate the BAC
     /// - Parameter sender: UIButton
     @IBAction func calculate(sender: Any){
-
         if gender == 0.0 {
             displayAlert(title: "Insufficient Input", message: "Please select Gender")
         } else if Double(beerTF.text!) == nil{
@@ -104,9 +99,7 @@ class BACCalculatorViewController: UIViewController {
                 bac = ((volumeOfAlocohal) * (5.14 / weight) * gender) - (0.015 * timeConsuming)
                 bac = bac > 0 ? bac : 0
             }
-
             resultTF.text = String(format:"%.2f", bac)
-            
         }
         
     }

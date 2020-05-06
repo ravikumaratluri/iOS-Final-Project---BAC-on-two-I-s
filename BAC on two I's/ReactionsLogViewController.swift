@@ -8,14 +8,14 @@
 
 import UIKit
 import Parse
+
+/// ReactionsLogViewController to represent the reactions log
 class ReactionsLogViewController: UITableViewController {
     
+    // Stored properties for reaction times and reaction dates
     var reactionTimes:[Double] = []
     var reactionDays:[String] = []
-    
-    
     var reactions = Reactions.shared
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +43,7 @@ class ReactionsLogViewController: UITableViewController {
         return 1
     }
     
+    // Returns the number of reactions
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return reactions.numReactions()
     }
@@ -52,7 +53,6 @@ class ReactionsLogViewController: UITableViewController {
     let dayLBLTag = 200
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "bac", for: indexPath)
         if reactions[indexPath.row] != nil {
             let timeLBL = cell.viewWithTag(timeLBLTag) as! UILabel
@@ -61,6 +61,6 @@ class ReactionsLogViewController: UITableViewController {
             dayLBL.text = reactions.getDay(index: indexPath.row)
         }
         return cell
-        
     }
+    
 }
