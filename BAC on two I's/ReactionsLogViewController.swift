@@ -19,7 +19,23 @@ class ReactionsLogViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Reactions Log (In Milliseconds by Day)"
+        navigationItem.title = "Reactions Log (milliSec by Day)"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Clear Log", style: .plain, target: self, action: #selector(displayInfo(sender:)))
+        NotificationCenter.default.addObserver(self, selector: #selector(reactionAdded(notification:)), name: NSNotification.Name(rawValue:"Added Reaction"), object: nil)
+    }
+    
+    @objc func reactionAdded(notification:Notification){
+        tableView.reloadData()
+    }
+    
+    @objc
+    func displayInfo(sender:Any){
+        reactions.clearReaction()
+        tableView.reloadData()
+        let ac = UIAlertController(title: "Cleared", message: "Log has been cleared", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        ac.addAction(action)
+        present(ac, animated: true, completion: nil)
     }
     
     // Returns the number of sections

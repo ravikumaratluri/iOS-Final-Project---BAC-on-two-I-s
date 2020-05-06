@@ -33,7 +33,7 @@ class Reactions {
     private var days = ["Sundnay", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
     private init(){
-                let query = PFQuery(className:"newTesting")
+                let query = PFQuery(className:"ReactionsData")
                 query.whereKey("user", equalTo:"new")
                 query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
                     if let error = error {
@@ -44,7 +44,6 @@ class Reactions {
                         print("Successfully retrieved \(objects.count) scores.")
                         // Do something with the found objects
                         for object in objects {
-                            print()
                             let formatter = DateFormatter()
                             formatter.dateFormat = "MM/dd/yyyy HH:mm:ss +SSSS"
                             formatter.timeZone = .autoupdatingCurrent
@@ -80,8 +79,28 @@ class Reactions {
         return index >= 0 && index < reactions.count ? reactions[index] : nil
     }
     
+    func clearReaction(){
+       let reactionQuery =  PFQuery(className: "ReactionsData")
+        reactionQuery.whereKey("user", equalTo:"new")
+        reactionQuery.findObjectsInBackground {
+        (objects: [PFObject]?, error: Error?)-> Void in
+            if let error = error {
+                // Log details of the failure
+                print(error.localizedDescription)
+            } else if let objects = objects {
+                // The find succeeded.
+                print("Successfully retrieved \(objects.count) scores.")
+                // Do something with the found objects
+                for object in objects {
+                    object.deleteEventually()
+                }
+            }
+        }
+        self.reactions = []
+    }
+    
     func addReaction(startTime:String, endTime:String) {
-        let reaction = PFObject(className : "newTesting")
+        let reaction = PFObject(className : "ReactionsData")
         reaction["startTime"] = startTime
         reaction["endTime"] = endTime
         reaction["user"] = "new"
@@ -148,39 +167,5 @@ class Reactions {
             return String(formatterTwo.string(from: startTime!))
         }
     }
-    /*
-    func calculateStartTime() -> String {
-        
-                    startTime = Date()
-         
-                    let formatter = DateFormatter()
-                    formatter.dateFormat = "MM/dd/yyyy EEEE HH:mm:ss.SSS a"
     
-                    let startTimeAndDate = formatter.string(from: startTime as Date)
-                   
-                 print("start: \(startTimeAndDate)")
-                    return startTimeAndDate
-        }
-    
-    func calculateTappedTime()  -> String {
-        
-               tappedTime = Date()
-            let formatter = DateFormatter()
-                formatter.dateFormat = "MM/dd/yyyy EEEE HH:mm:ss.SSS a"
-        
-                let tappedTimeAndDate = formatter.string(from: tappedTime as Date)
-                     print("tap: \(tappedTimeAndDate)")
-            return tappedTimeAndDate
-                
-        }
-    
-    func calculateReactionTime() -> String {
-        
-        let reactionTime = String(format:"%.6f",tappedTime.timeIntervalSince(startTime as Date))
-        startTime = tappedTime
-
-         print("reaction: \(reactionTime)")
-        return reactionTime
-    }
-   */
 }

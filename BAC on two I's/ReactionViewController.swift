@@ -54,11 +54,9 @@ class ReactionViewController: UIViewController {
         formatter.timeZone = .current
         formatter.dateFormat = "MM/dd/yyyy HH:mm:ss +SSSS"
         endTime = formatter.string(from: dateTime as Date)
-        print("Started at \(startTime)") // send to database
-        print("Ended at \(endTime)")
         
         reactions.addReaction(startTime: startTime, endTime: endTime)
-        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:"Added Reaction"), object: nil)
         startTime = endTime
         
         // Find the blinkingButton's width and height

@@ -21,8 +21,7 @@ class ReactionsGraphViewController: UIViewController {
     @IBOutlet weak var reactionCountLBL:UILabel!
     
     
-    @IBAction func doSomething(sender: UISlider){
-        print(sender.value)
+    @IBAction func drawGraph(sender: UISlider){
         setData(sender: sender)
     }
     
