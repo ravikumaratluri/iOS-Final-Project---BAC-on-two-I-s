@@ -9,15 +9,14 @@
 import UIKit
 import Parse
 
+/// ReactionViewController class for home page
 class ReactionViewController: UIViewController {
-   // let reactionTime = PFObject(className:"ReactionTime")
-     var startTime = "startTime"
-     var endTime = "endTime"
+    var startTime = "startTime"
+    var endTime = "endTime"
     var reactions = Reactions.shared
+    
     /// blinking button to display at random positions
     @IBOutlet weak var blinkingButton:UIButton!
-    
-    
     /// view for the blinking button
     @IBOutlet weak var reactionAreaView: UIView!
     
@@ -78,12 +77,8 @@ class ReactionViewController: UIViewController {
         // Offset the button's center by the random offsets.
         blinkingButton.center.x = xoffset + blinkingButtonWidth / 2
         blinkingButton.center.y = yoffset + blinkingButtonHeight / 2
-        
-        
-        
     }
     
-      
 }
 
 
