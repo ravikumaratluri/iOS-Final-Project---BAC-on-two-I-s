@@ -55,9 +55,6 @@ class Reactions {
         }
     }
     
-    
-    
-    
     /// getReaction to get the particular reaction
     /// - Parameter index: index
     func getReaction(at index:Int)->Reaction? {
@@ -77,6 +74,7 @@ class Reactions {
         return index >= 0 && index < reactions.count ? reactions[index] : nil
     }
     
+    /// Clears the log details of reactions
     func clearReaction(){
         let reactionQuery =  PFQuery(className: "ReactionsData")
         reactionQuery.whereKey("user", equalTo:"new")
@@ -97,6 +95,10 @@ class Reactions {
         self.reactions = []
     }
     
+    /// Appends the reactions to an array of reactions
+    /// - Parameters:
+    /// - startTime : start time of a reaction
+    /// - endTime : end time of a reaction
     func addReaction(startTime:String, endTime:String) {
         let reaction = PFObject(className : "ReactionsData")
         reaction["startTime"] = startTime
@@ -115,6 +117,7 @@ class Reactions {
         self.reactions.append(Reaction(startTime: startTime, endTime: endTime, user: "new"))
     }
     
+    /// getReactionTime method to calculate the reaction time of the user in milliseconds
     func getReactionTime(indes:Int) -> Double {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yyyy HH:mm:ss +SSSS"
@@ -142,6 +145,7 @@ class Reactions {
         return totalMilliSeconds
     }
     
+    /// getDay method to get the day from calender
     func getDay(index:Int) -> String {
         let formatter = DateFormatter()
         let todayDateTime = Date()
